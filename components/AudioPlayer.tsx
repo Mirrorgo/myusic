@@ -8,7 +8,7 @@ function AudioPlayer() {
           {/* <audio controls src="/media/cc0-audio/t-rex-roar.mp3"></audio> */}
           <audio
             controls
-            src="http://server.unimelb.top/public/music/myaudio.m4a"
+            src="https://server.unimelb.top/public/music/myaudio.m4a"
           ></audio>
           {/* <a href="/media/cc0-audio/t-rex-roar.mp3"> Download audio </a> */}
         </figure>
