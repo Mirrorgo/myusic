@@ -1,7 +1,6 @@
 function AudioPlayer() {
   return (
     <div>
-      wowo
       <div>
         <figure>
           <figcaption>Listen to the T-Rex:</figcaption>
