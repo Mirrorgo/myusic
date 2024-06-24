@@ -25,7 +25,7 @@ export default function Home() {
         {/* <Button>按钮</Button> */}
         {/* STAR: 先简化其他ui部分，把核心后端和播放的功能做出来 */}
         <div className=" h-24">space</div>
-        <Card className="h-80">
+        <Card className="relative  h-80">
           {/* 歌曲封面/歌词 */}
           <Image
             src="/studio.png"
@@ -34,6 +34,10 @@ export default function Home() {
             height={500}
             alt="Picture of the author"
           />
+          <div className="absolute z-10 text-white  left-1/2 top-1/3 -translate-x-1/2 flex flex-col items-center gap-7">
+            <div className="text-5xl">浓缩蓝鲸</div>
+            <div className="text-4xl">裘德</div>
+          </div>
         </Card>
         {/* 一个背景+大字歌曲名字&歌手名字也可以 */}
         <Card className="h-20">
