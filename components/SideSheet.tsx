@@ -14,7 +14,7 @@ function SideSheet() {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Icon path={mdiMenu} size={2} />
+        <Icon path={mdiMenu} size={1.5} />
       </SheetTrigger>
       <SheetContent side={"left"} className="text-4xl">
         <p>wow</p>

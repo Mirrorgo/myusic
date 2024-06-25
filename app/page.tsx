@@ -49,9 +49,10 @@ export default function Home() {
           </div>
         </Card>
       </div>
+      {/* TODO: 仿照progress自己做一个进度条 */}
       <Card className="h-32">
-        <p>播放器卡片组件</p>
-        {/* <AudioPlayer /> */}
+        {/* <p>播放器卡片组件</p> */}
+        <AudioPlayer />
       </Card>
       {/* <Separator />
       下面这些暂时没用
