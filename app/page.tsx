@@ -14,6 +14,11 @@ import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
 
 export default function Home() {
+  const music = {
+    name: "浓缩蓝鲸",
+    singer: "裘德",
+    album: "最后的水族馆",
+  };
   return (
     <main className="flex flex-col justify-between h-screen">
       {/* 上半部分 */}
@@ -24,8 +29,9 @@ export default function Home() {
         </div>
         {/* <Button>按钮</Button> */}
         {/* STAR: 先简化其他ui部分，把核心后端和播放的功能做出来 */}
-        <div className=" h-24">space</div>
-        <Card className="relative  h-80">
+        {/* <div className=" h-24">space</div> */}
+        {/* <Card className="relative h-80"> */}
+        <Card className="relative mx-5 mt-16">
           {/* 歌曲封面/歌词 */}
           <Image
             src="/studio.png"
@@ -34,18 +40,19 @@ export default function Home() {
             height={500}
             alt="Picture of the author"
           />
-          <div className="absolute z-10 text-white  left-1/2 top-1/3 -translate-x-1/2 flex flex-col items-center gap-7">
-            <div className="text-5xl">浓缩蓝鲸</div>
+          {/* <div className="absolute z-10 text-white  left-1/2 top-1/3 -translate-x-1/2 flex flex-col items-center gap-7"> */}
+          <div className="absolute z-10 text-white top-1/3 flex flex-col items-center gap-7 w-full">
+            <div className="text-5xl ">浓缩蓝鲸</div>
             <div className="text-4xl">裘德</div>
           </div>
         </Card>
         {/* 一个背景+大字歌曲名字&歌手名字也可以 */}
         <Card className="h-20">
-          <div className="text-xl">歌曲名字</div>
+          <div className="text-xl font-bold">{music.name}</div>
           <div className="text-base flex justify-between w-full ">
-            <div>歌手名字</div>
+            <div className="cursor-pointer">{music.singer}</div>
             <Separator orientation="vertical" />
-            <div>专辑名字</div>
+            <div className="cursor-pointer">{music.album}</div>
           </div>
         </Card>
       </div>

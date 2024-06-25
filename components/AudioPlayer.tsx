@@ -12,18 +12,27 @@ import {
   mdiPlaylistMusic,
 } from "@mdi/js";
 import {} from "@mdi/js";
+import Image from "next/image";
+import MyIcon from "./MyIcon";
+import PlaySetting from "./PlaySetting";
 function AudioPlayer() {
   const [sound, setSound] = useState<Howl>();
   const [isPlay, setIsPlay] = useState<Boolean>(false);
   // TODO: 无歌时的处理: 播放按钮disable
+  const [canUserM4a, setCanUserM4a] = useState<Boolean>(false);
+  useEffect(() => {
+    setCanUserM4a(Howler.codecs("m4a"));
+    return () => {};
+  }, []);
 
   useEffect(() => {
     const newSound = new Howl({
-      src: ["https://server.unimelb.top/public/music/myaudio.m4a"], // 替换为你的音频文件路径
-      // src: ["/path/"], // 替换为你的音频文件路径
+      // src: ["https://server.unimelb.top/public/music/myaudio.m4a"], // 替换为你的音频文件路径
+      src: ["https://server.unimelb.top/public/music/test.webm"], // 替换为你的音频文件路径
       volume: 0.5,
       html5: true,
     });
+
     setSound(newSound);
 
     // 清理函数，在组件卸载时停止音频
@@ -56,33 +65,28 @@ function AudioPlayer() {
   // FIXME: 在手机端edge上无法播放
   return (
     <div>
-      <div>
-        <audio
-          controls
-          src="https://server.unimelb.top/public/music/myaudio.m4a"
-        ></audio>
-        <div className="flex justify-between items-center">
-          <Icon path={mdiPlay} size={1.3} />
-          <div className="flex justify-between items-center w-48">
-            <div className=" cursor-pointer">
-              <Icon path={mdiSkipPrevious} size={1.7} />
-            </div>
-            <div
-              className=" cursor-pointer"
-              onClick={() => (isPlay ? pauseSound() : playSound())}
-            >
-              {isPlay ? (
-                <Icon path={mdiPause} size={2} />
-              ) : (
-                <Icon path={mdiPlay} size={2} />
-              )}
-            </div>
-            <div className=" cursor-pointer">
-              <Icon path={mdiSkipNext} size={1.7} />
-            </div>
+      <div className="flex justify-between items-center w-5/6 mx-auto">
+        {/* <MyIcon src={"/repeat_one.svg"} size={1.3} /> */}
+        <PlaySetting />
+        <div className="flex justify-between items-center w-6/12">
+          <div className=" cursor-pointer">
+            <Icon path={mdiSkipPrevious} size={1.7} />
           </div>
-          <Icon path={mdiPlaylistMusic} size={1.3} />
+          <div
+            className=" cursor-pointer"
+            onClick={() => (isPlay ? pauseSound() : playSound())}
+          >
+            {isPlay ? (
+              <Icon path={mdiPause} size={2.3} />
+            ) : (
+              <Icon path={mdiPlay} size={2.3} />
+            )}
+          </div>
+          <div className=" cursor-pointer">
+            <Icon path={mdiSkipNext} size={1.7} />
+          </div>
         </div>
+        <Icon path={mdiPlaylistMusic} size={1.3} />
       </div>
     </div>
   );
