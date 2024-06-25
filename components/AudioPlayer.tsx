@@ -22,6 +22,7 @@ function AudioPlayer() {
       src: ["https://server.unimelb.top/public/music/myaudio.m4a"], // 替换为你的音频文件路径
       // src: ["/path/"], // 替换为你的音频文件路径
       volume: 0.5,
+      html5: true,
     });
     setSound(newSound);
 
