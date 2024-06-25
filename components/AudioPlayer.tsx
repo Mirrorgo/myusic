@@ -51,13 +51,15 @@ function AudioPlayer() {
       sound.stop();
     }
   };
+  // TODO: chrome上外部的播放器按钮需要支持反控
+  // FIXME: 在手机端edge上无法播放
   return (
     <div>
       <div>
-        {/* <audio
+        <audio
           controls
           src="https://server.unimelb.top/public/music/myaudio.m4a"
-        ></audio> */}
+        ></audio>
         <div className="flex justify-between items-center">
           <Icon path={mdiPlay} size={1.3} />
           <div className="flex justify-between items-center w-48">
