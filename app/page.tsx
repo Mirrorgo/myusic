@@ -1,7 +1,7 @@
-import AudioPlayer from "@/components/AudioPlayer";
-import LeftSideBar from "@/components/LeftSideBar";
-import LeftSideSheet from "@/components/LeftSideSheet";
-import { SuperPanel } from "@/components/SuperPanel";
+import AudioPlayer from "@/components/audio-player";
+import LeftSideBar from "@/app/components/left-side-bar";
+import LeftSideSheet from "@/app/components/left-side-sheet";
+import { SuperPanel } from "@/components/super-panel";
 import { Button } from "@/components/ui/button";
 import {
   Card,

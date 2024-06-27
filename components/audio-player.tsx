@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 import { Howl } from "howler";
 import Icon from "@mdi/react";
 import { mdiSkipPrevious, mdiSkipNext, mdiPause, mdiPlay } from "@mdi/js";
-import PlaySetting from "./PlaySetting";
-import PlayList from "./PlayList";
+import PlaySetting from "./play-setting";
+import PlayList from "./play-list";
 import { Separator } from "./ui/separator";
 function AudioPlayer() {
   const [sound, setSound] = useState<Howl>();

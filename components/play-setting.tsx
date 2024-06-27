@@ -8,7 +8,7 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
-import MyIcon from "./MyIcon";
+import MyIcon from "./my-icon";
 import { Separator } from "./ui/separator";
 
 function PlaySetting() {

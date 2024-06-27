@@ -1,7 +1,7 @@
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import Icon from "@mdi/react";
 import { mdiMenu, mdiHelpCircleOutline } from "@mdi/js";
-import LeftSideContent from "./LeftSideContent";
+import LeftSideContent from "./left-side-content";
 
 function LeftSideSheet() {
   return (
@@ -11,7 +11,7 @@ function LeftSideSheet() {
         <Icon path={mdiMenu} size={1.3} className="sm:hidden" />
       </SheetTrigger>
       <SheetContent side={"left"} className="flex flex-col">
-        <div className="text-xl font-bold">乐堂</div>
+        <div className="text-xl font-bold">乐馆</div>
         <LeftSideContent />
       </SheetContent>
     </Sheet>
