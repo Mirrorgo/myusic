@@ -1,20 +1,11 @@
 "use client";
 import { useEffect, useState } from "react";
 import { Howl } from "howler";
-import { Button } from "./ui/button";
 import Icon from "@mdi/react";
-import { Toggle } from "@radix-ui/react-toggle";
-import {
-  mdiSkipPrevious,
-  mdiSkipNext,
-  mdiPause,
-  mdiPlay,
-  mdiPlaylistMusic,
-} from "@mdi/js";
-import {} from "@mdi/js";
-import Image from "next/image";
-import MyIcon from "./MyIcon";
+import { mdiSkipPrevious, mdiSkipNext, mdiPause, mdiPlay } from "@mdi/js";
 import PlaySetting from "./PlaySetting";
+import PlayList from "./PlayList";
+import { Separator } from "./ui/separator";
 function AudioPlayer() {
   const [sound, setSound] = useState<Howl>();
   const [isPlay, setIsPlay] = useState<Boolean>(false);
@@ -86,7 +77,7 @@ function AudioPlayer() {
             <Icon path={mdiSkipNext} size={1.7} />
           </div>
         </div>
-        <Icon path={mdiPlaylistMusic} size={1.3} />
+        <PlayList />
       </div>
     </div>
   );

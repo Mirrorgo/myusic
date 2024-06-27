@@ -17,7 +17,7 @@ function PlaySetting() {
       <DrawerTrigger asChild>
         <MyIcon src={"/repeat_one.svg"} size={1.3} />
       </DrawerTrigger>
-      <DrawerContent>
+      <DrawerContent className="outline-none">
         <div className="mx-auto w-full max-w-sm">
           <DrawerHeader>
             <DrawerTitle asChild>
