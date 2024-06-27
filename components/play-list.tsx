@@ -45,7 +45,7 @@ function PlayList() {
           <ScrollArea className="h-72 w-full px-4">
             <div>
               {tags.map((tag) => (
-                <div className="flex gap-4 items-baseline w-full">
+                <div key={tag} className="flex gap-4 items-baseline w-full">
                   <div className="text-gray-200">·</div>
                   <div key={tag} className="text-sm h-7">
                     {tag}
