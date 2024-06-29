@@ -8,10 +8,9 @@ function LeftSideSheet() {
     // TODO:支持类似pin的效果
     <Sheet>
       <SheetTrigger asChild>
-        <Icon path={mdiMenu} size={1.3} className="sm:hidden" />
+        <Icon path={mdiMenu} size={1.3} />
       </SheetTrigger>
       <SheetContent side={"left"} className="flex flex-col">
-        <div className="text-xl font-bold">乐馆</div>
         <LeftSideContent />
       </SheetContent>
     </Sheet>
