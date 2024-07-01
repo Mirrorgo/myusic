@@ -18,11 +18,12 @@ import {
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
 import { X } from "lucide-react";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import LeftSideContent from "../components/left-side-content";
 import useUpdateUrl from "@/hooks/useUpdateUrl";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import useMediaMinWidth from "@/hooks/useMediaMinWidth";
+import HomeSheet from "./components/home-sheet";
 
 export default function RootLayout({
   children,
@@ -35,21 +36,6 @@ export default function RootLayout({
     showBottomPlayerCard: showBottomMusicCard,
   } = usePlayerCardStore();
 
-  const { isHomeShown, showHome, hideHome } = useHomeStore();
-  const router = useRouter();
-  const searchParams = useSearchParams();
-
-  const homeshown = searchParams.get("homeshown");
-  useEffect(() => {
-    if (homeshown === "true") {
-      showHome();
-    } else {
-      hideHome();
-    }
-  }, [homeshown, showHome, hideHome]);
-
-  const paramName = "homeshown";
-  useUpdateUrl(paramName, isHomeShown ? "true" : null);
   const music = {
     name: "浓缩蓝鲸",
     singer: "裘德",
@@ -61,29 +47,11 @@ export default function RootLayout({
       <div className="sm:flex">
         {/* <LeftSideBar /> */}
         {/* <LeftSideSheet /> */}
-        <div className="hidden sm:block sm:flex-grow sm:p-2 relative">
-          <>{children}</>
-          {isHomeShown && (
-            <div
-              className={`absolute inset-y-0 left-0 transform ${
-                isHomeShown ? "translate-x-0" : "-translate-x-full"
-              } transition-transform duration-500 ease-in-out bg-white w-full`}
-            >
-              <div className="p-4">
-                <button
-                  className="absolute top-0 right-0 mt-4 mr-4"
-                  onClick={() => {
-                    router.back();
-                    hideHome();
-                  }}
-                >
-                  <X />
-                </button>
-                <LeftSideContent />
-              </div>
-            </div>
-          )}
-        </div>
+        <Suspense fallback={<div>loading...</div>}>
+          <HomeSheet className="hidden sm:block sm:flex-grow sm:p-2 relative">
+            {children}
+          </HomeSheet>
+        </Suspense>
 
         {/* 当前音乐卡片界面 */}
         {currentMusicCardType === "normal" || matches.sm ? (
@@ -130,29 +98,11 @@ export default function RootLayout({
           <div className="flex justify-between flex-col h-screen">
             <div>
               {/* 试试 */}
-              <div className="block sm:block sm:flex-grow sm:p-2 relative">
-                <>{children}</>
-                {isHomeShown && (
-                  <div
-                    className={`absolute inset-y-0 left-0 transform ${
-                      isHomeShown ? "translate-x-0" : "-translate-x-full"
-                    } transition-transform duration-500 ease-in-out bg-white w-full`}
-                  >
-                    <div className="p-4">
-                      <button
-                        className="absolute top-0 right-0 mt-4 mr-4"
-                        onClick={() => {
-                          router.back();
-                          hideHome();
-                        }}
-                      >
-                        <X />
-                      </button>
-                      <LeftSideContent />
-                    </div>
-                  </div>
-                )}
-              </div>
+              <Suspense fallback={<div>loading...</div>}>
+                <HomeSheet className="block sm:block sm:flex-grow sm:p-2 relative">
+                  {children}
+                </HomeSheet>
+              </Suspense>
             </div>
             <div onClick={() => showNormalMusicCard()}>bottom music bar</div>
           </div>
