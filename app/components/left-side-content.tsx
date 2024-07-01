@@ -8,6 +8,7 @@ import {
 import { mdiHelpCircleOutline } from "@mdi/js";
 import MusicItem from "@/components/music-item";
 import { Badge } from "@/components/ui/badge";
+import Link from "next/link";
 
 function LeftSideContent() {
   return (
@@ -36,7 +37,12 @@ function LeftSideContent() {
         {/* 或者叫做快捷搜索？ */}
       </div>
       <div>
-        <MusicItem />
+        <Link href={"/home/artist/sun"}>
+          <MusicItem />
+        </Link>
+        <Link href={"/home/artist/zhou"}>
+          <MusicItem />
+        </Link>
       </div>
     </>
   );
