@@ -4,7 +4,7 @@ import { mdiMenu } from "@mdi/js";
 import Icon from "@mdi/react";
 
 export default function Home() {
-  const { showHome, hideHome } = useHomeStore();
+  const { showHome } = useHomeStore();
   return (
     // TODO: 测试用背景颜色
     <>

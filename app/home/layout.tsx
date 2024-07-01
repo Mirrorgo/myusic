@@ -1,27 +1,14 @@
 "use client";
 
-import { useHomeStore, usePlayerCardStore } from "@/store/global";
+import { usePlayerCardStore } from "@/store/global";
 
 import Player from "@/components/player";
-import LeftSideBar from "@/app/components/left-side-bar";
-import LeftSideSheet from "@/app/components/left-side-sheet";
 import { SuperPanel } from "@/components/super-panel";
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
 import { X } from "lucide-react";
 import { Suspense, useEffect, useState } from "react";
-import LeftSideContent from "../components/left-side-content";
-import useUpdateUrl from "@/hooks/useUpdateUrl";
-import { useParams, useRouter, useSearchParams } from "next/navigation";
 import useMediaMinWidth from "@/hooks/useMediaMinWidth";
 import HomeSheet from "./components/home-sheet";
 
