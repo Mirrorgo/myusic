@@ -8,7 +8,7 @@ export default function Home() {
   return (
     // TODO: 测试用背景颜色
     <>
-      <div onClick={() => showHome()}>
+      <div onClick={() => showHome()} className="lg:invisible">
         <Icon path={mdiMenu} size={1.2} />
       </div>
 
