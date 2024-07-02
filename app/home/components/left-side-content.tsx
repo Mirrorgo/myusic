@@ -4,7 +4,7 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "../../components/ui/tooltip";
+} from "../../../components/ui/tooltip";
 import { mdiHelpCircleOutline } from "@mdi/js";
 import MusicItem from "@/components/music-item";
 import { Badge } from "@/components/ui/badge";

@@ -1,4 +1,4 @@
-import LeftSideContent from "./left-side-content";
+import LeftSideContent from "../home/components/left-side-content";
 
 function LeftSideBar() {
   return (

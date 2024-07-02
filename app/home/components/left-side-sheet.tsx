@@ -1,11 +1,13 @@
-import LeftSideContent from "@/app/components/left-side-content";
+import LeftSideContent from "@/app/home/components/left-side-content";
+import useMediaMinWidth from "@/hooks/useMediaMinWidth";
 import useUpdateUrl from "@/hooks/useUpdateUrl";
 import { useHomeStore } from "@/store/global";
 import { X } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 
-const HomeSheet = ({
+// 有左侧的sheet效果的时候才使用
+const LeftSideSheet = ({
   className,
   children,
 }: {
@@ -27,6 +29,7 @@ const HomeSheet = ({
 
   const paramName = "homeshown";
   useUpdateUrl(paramName, isHomeShown ? "true" : null);
+  const { matches } = useMediaMinWidth();
 
   return (
     <>
@@ -56,4 +59,4 @@ const HomeSheet = ({
     </>
   );
 };
-export default HomeSheet;
+export default LeftSideSheet;
