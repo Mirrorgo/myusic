@@ -26,7 +26,7 @@ export default function RootLayout({
     <>
       <div className="sm:flex">
         <Suspense fallback={<div>loading...</div>}>
-          <LeftSideSheet className="hidden sm:block sm:flex-grow sm:p-2 relative">
+          <LeftSideSheet className="hidden sm:block sm:flex-grow sm:px-2 relative">
             {children}
           </LeftSideSheet>
         </Suspense>
@@ -39,7 +39,7 @@ export default function RootLayout({
           <div className="flex justify-between flex-col h-screen">
             <div>
               <Suspense fallback={<div>loading...</div>}>
-                <LeftSideSheet className="block">{children}</LeftSideSheet>
+                <LeftSideSheet className="">{children}</LeftSideSheet>
               </Suspense>
             </div>
             <div onClick={() => showNormalMusicCard()}>bottom music bar</div>

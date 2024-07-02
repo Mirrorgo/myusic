@@ -1,4 +1,5 @@
 import LeftSideContent from "@/app/home/components/left-side-content";
+import { Separator } from "@/components/ui/separator";
 import useMediaMinWidth from "@/hooks/useMediaMinWidth";
 import useUpdateUrl from "@/hooks/useUpdateUrl";
 import { useHomeStore } from "@/store/global";
@@ -34,8 +35,19 @@ const LeftSideSheet = ({
   return (
     <>
       <div className={className}>
-        <>{children}</>
-        {isHomeShown && (
+        <div className="lg:hidden">{children}</div>
+        {matches.lg && (
+          <div className="flex gap-2">
+            {/* NOTE：这个400可以任意修改 */}
+            <div className="flex-grow my-2 max-w-[400px]">
+              <LeftSideContent />
+            </div>
+            <Separator orientation="vertical" className=" h-screen mx-2" />
+            {/* NOTE：这个5可以任意修改 */}
+            <div className="grow-[5]">{children}</div>
+          </div>
+        )}
+        {!matches.lg && isHomeShown && (
           <div
             className={`absolute inset-y-0 left-0 transform ${
               isHomeShown ? "translate-x-0" : "-translate-x-full"

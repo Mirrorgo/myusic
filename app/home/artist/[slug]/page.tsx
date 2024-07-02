@@ -11,7 +11,7 @@ export default function Page({ params }: { params: { slug: string } }) {
   return (
     <div>
       <div className="flex">
-        <div onClick={() => showHome()}>
+        <div className="lg:invisible" onClick={() => showHome()}>
           <Icon path={mdiMenu} size={1.2} />
         </div>
       </div>
