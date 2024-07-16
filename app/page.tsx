@@ -7,7 +7,7 @@ function Page() {
   // 在组件中使用
   const fetchData = async () => {
     try {
-      const response = await api.post("/v1/user/list");
+      const response = await api().post("/v1/user/list");
       // 处理响应
       console.log(response.data, "aha");
     } catch (error) {
