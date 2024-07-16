@@ -29,7 +29,7 @@ const getApiInstance = (): AxiosInstance => {
 };
 
 const apiLogin = async (email: string, password: string) => {
-  const response = await api.post("/auth/login", {
+  const response = await getApiInstance().post("/auth/login", {
     email,
     password,
   });
