@@ -1,6 +1,6 @@
 "use client";
+import { api } from "@/service/core/apiService";
 import Link from "next/link";
-import { api } from "./store/authStore";
 import { useEffect } from "react";
 
 function Page() {

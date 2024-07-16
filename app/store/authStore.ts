@@ -3,6 +3,11 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import axios from "axios";
 import { cookies } from "next/headers";
+import {
+  apiLogin,
+  removeAuthToken,
+  setAuthToken,
+} from "@/service/core/apiService";
 
 type AuthState = {
   user: any;
@@ -13,51 +18,27 @@ type AuthState = {
   //   checkAuth: () => Promise<boolean>;
 };
 
-const api = axios.create({
-  baseURL: "http://localhost:30270/api",
-});
-
 const useAuthStore = create<AuthState>()(
   persist(
     (set, get) => ({
       user: null,
       token: null,
       login: async (email: string, password: string) => {
-        const response = await fetch("http://localhost:30270/api/auth/login", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email, password }),
-        });
-
-        if (response.ok) {
-          const {
-            data: { access_token },
-          } = await response.json();
-          set({ token: access_token, user: { email } });
-          api.defaults.headers.common[
-            "Authorization"
-          ] = `Bearer ${access_token}`; // all request https://axios-http.com/docs/config_defaults
-          //   NOTE: 用httpOnly目前不行，访问不到了
-          //   研究下怎么更安全
-          //   document.cookie = `token=${access_token}; path=/; secure; HttpOnly; SameSite=Strict`;
-          document.cookie = `token=${access_token}; path=/; secure; SameSite=Strict`;
-          //   👇是服务端用的
-          // cookies().set({
-          // 	name: 'token',
-          // 	value: access_token,
-          // 	path: '/',
-          // 	secure: true,
-          // 	sameSite: 'Strict'
-          //   });
-
+        try {
+          const token = await apiLogin(email, password);
+          set({ token, user: { email } });
+          setAuthToken(token);
+          // 目前不能用httpOnly, 考虑改下对应的后端然后用httpOnly
+          document.cookie = `token=${token}; path=/; secure; SameSite=Strict`;
           return true;
-        } else {
+        } catch (error) {
+          console.error("Login error:", error);
           return false;
         }
       },
       logout: () => {
         set({ user: null, token: null });
-        delete api.defaults.headers.common["Authorization"];
+        removeAuthToken();
       },
       isAuthenticated: () => !!get().token,
       //   checkAuth: async () => {
@@ -83,4 +64,4 @@ const useAuthStore = create<AuthState>()(
   )
 );
 
-export { useAuthStore, api };
+export { useAuthStore };
