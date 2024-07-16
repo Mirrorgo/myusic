@@ -15,7 +15,7 @@ async function Main() {
         <div className="flex flex-col">
           {songs.map((song) => (
             // <div key={song.id}>{song.title}</div>
-            <SongItem {...song} />
+            <SongItem key={song.id} {...song} />
           ))}
         </div>
       ) : (

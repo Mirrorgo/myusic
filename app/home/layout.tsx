@@ -25,9 +25,11 @@ export default function RootLayout({
   return (
     <>
       <div className="sm:flex">
-        <LeftSideSheet className="hidden sm:block sm:flex-grow sm:px-2 relative">
-          {children}
-        </LeftSideSheet>
+        <Suspense fallback={<div>loading...</div>}>
+          <LeftSideSheet className="hidden sm:block sm:flex-grow sm:px-2 relative">
+            {children}
+          </LeftSideSheet>
+        </Suspense>
 
         {/* 当前音乐卡片界面 */}
         {currentMusicCardType === "normal" || matches.sm ? (
