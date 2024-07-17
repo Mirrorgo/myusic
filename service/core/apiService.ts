@@ -22,7 +22,7 @@ const getApiInstance = (): AxiosInstance => {
   api = axios.create({
     //   baseURL: process.env.NEXT_PUBLIC_API_BASE_URL,
     // baseURL: "http://localhost:30270/api",
-    baseURL: "http://server.unimelb.top:30270/api",
+    baseURL: "https://server.unimelb.top/wubian/api",
   });
 
   return api;
