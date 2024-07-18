@@ -1,6 +1,6 @@
 import { Suspense } from "react";
-import Main from "./components/main";
 import Back from "./components/back";
+import Main from "./components/main";
 
 export default function Page({ params }: { params: { slug: string } }) {
   return (

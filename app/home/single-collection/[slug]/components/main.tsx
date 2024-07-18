@@ -12,10 +12,11 @@ async function Main() {
   return (
     <div>
       {songs && songs.length > 0 ? (
-        <div className="flex flex-col">
-          {songs.map((song) => (
+        <div className="flex flex-col gap-2">
+          {songs.map((song, idx) => (
             // <div key={song.id}>{song.title}</div>
-            <SongItem key={song.id} {...song} />
+            // <SongItem key={song.id} {...song} index={idx}/>
+            <SongItem key={song.id} {...song} index={idx + 1} />
           ))}
         </div>
       ) : (
