@@ -2,7 +2,7 @@ import { Song } from "@/service/song";
 import { Play } from "lucide-react";
 import DateFormatter from "./date-formatter";
 
-function SongItem(song: Partial<Song> & { index: number }) {
+function SongItem(song: Song & { index: number }) {
   console.log("song", song);
   // if song.update存在
   return (
@@ -15,7 +15,7 @@ function SongItem(song: Partial<Song> & { index: number }) {
       <Play />
       <div>{song.title}</div>
       <div>
-        <DateFormatter timestamp={song.updatedAt ?? ""} />
+        <DateFormatter timestamp={song.updatedAt} />
       </div>
     </div>
   );
