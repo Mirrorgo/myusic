@@ -1,5 +1,5 @@
 import SongItem from "@/app/components/song-item";
-import { api } from "@/service/core/apiService";
+import SongList from "@/app/components/song-list";
 import { querySongList } from "@/service/song";
 import { cache } from "react";
 
@@ -13,11 +13,12 @@ async function Main() {
     <div>
       {songs && songs.length > 0 ? (
         <div className="flex flex-col gap-2">
-          {songs.map((song, idx) => (
+          {/* {songs.map((song, idx) => (
             // <div key={song.id}>{song.title}</div>
             // <SongItem key={song.id} {...song} index={idx}/>
             <SongItem key={song.id} {...song} index={idx + 1} />
-          ))}
+          ))} */}
+          <SongList songs={songs} />
         </div>
       ) : (
         <p>No songs available or failed to load songs.</p>

@@ -1,12 +1,6 @@
 import axios from "axios";
 import { api } from "./core/apiService";
-
-interface BaseResponse<T> {
-  code: number;
-  msg: string;
-  success: boolean;
-  data: T;
-}
+import { BaseResponse } from ".";
 
 interface Song {
   id: number;

@@ -1,17 +1,14 @@
 "use client";
 import { useHomeStore } from "@/store/global";
-import { mdiMenu } from "@mdi/js";
-import Icon from "@mdi/react";
-import { ArrowLeft, X } from "lucide-react";
-import { Suspense, useEffect } from "react";
+import { IconSize } from "@/types/enums";
+import { Menu } from "lucide-react";
 function Back() {
-  const { isHomeShown, showHome, hideHome } = useHomeStore();
+  const { showHome } = useHomeStore();
 
   return (
-    <div className="flex">
-      <div className="lg:invisible" onClick={() => showHome()}>
-        <Icon path={mdiMenu} size={1.2} />
-      </div>
+    <div className="lg:invisible" onClick={() => showHome()}>
+      {/* <Icon path={mdiMenu} size={1.2} /> */}
+      <Menu size={IconSize.Medium} />
     </div>
   );
 }

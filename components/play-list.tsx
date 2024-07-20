@@ -29,6 +29,7 @@ function PlayList() {
           <DrawerHeader>
             <DrawerTitle asChild>
               <div className="flex justify-between items-center">
+                {/* 当前播放列表是一个临时的播放列表, 从歌单or其他位置立即加入所有内容到列表中 */}
                 <div>当前播放列表</div>
                 <div className="flex items-center gap-1">
                   <MyIcon src={"/repeat.svg"} size={0.8} />
