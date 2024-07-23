@@ -10,7 +10,7 @@ type SongItemTypes = Song & {
 };
 
 function SongItem(props: SongItemTypes) {
-  console.log("song", props);
+  // console.log("song", props);
   // if song.update存在
   // 修改为选中的就会, 且一个灰色的背景 bg-slate-100
   // <AudioLines />
@@ -25,7 +25,12 @@ function SongItem(props: SongItemTypes) {
         <div className="text-center">{props.index + 1}</div>
         <div className="flex flex-col text-sm">
           <div>{props.title}</div>
-          <div>{props.artistId}</div>
+          {/* TODO: 可能的问题: 歌手太多 */}
+          <div className="flex">
+            {props.artist.map((cur, idx) => (
+              <div key={idx}>{cur.name}</div>
+            ))}
+          </div>
         </div>
         {/* 超大屏才会显示,也才要渲染,暂时先隐藏 */}
         <div className="hidden">{props.albumId}</div>

@@ -3,15 +3,11 @@ import { X } from "lucide-react";
 import { Card } from "../ui/card";
 import Image from "next/image";
 import Player from "./components/player";
-import { use } from "react";
+import { useCurrentSong } from "@/store/currentSong";
 
 function MusicCard() {
   const showBottomPlayerCard = usePlayerCardStore.use.showBottomPlayerCard();
-  const music = {
-    name: "浓缩蓝鲸",
-    singer: "裘德",
-    album: "最后的水族馆",
-  };
+  const currentSong = useCurrentSong.use.currentSong();
   return (
     <>
       <div className="flex flex-col justify-between h-screen sm:max-w-md ">
@@ -30,22 +26,30 @@ function MusicCard() {
               className="rounded-sm"
             />
             <div className="absolute z-10 text-white top-1/3 flex flex-col items-center gap-7 w-full">
-              <div className="text-5xl ">{music.name}</div>
-              <div className="text-4xl">{music.singer}</div>
+              <div className="text-5xl ">{currentSong.title}</div>
+              <div className="text-4xl flex">
+                {currentSong.artist.map((cur, idx) => (
+                  <div key={idx}>{cur.name}</div>
+                ))}
+              </div>
             </div>
           </Card>
           {/* 一个背景+大字歌曲名字&歌手名字也可以 */}
           <div className="h-20 mx-5 mt-2">
-            <div className="text-xl font-bold">{music.name}</div>
+            <div className="text-xl font-bold">{currentSong.title}</div>
             <div className="text-base flex justify-between w-full ">
-              <div className="cursor-pointer">{music.singer}</div>
-              <div className="cursor-pointer">{music.album}</div>
+              <div className="cursor-pointer flex">
+                {currentSong.artist.map((cur, idx) => (
+                  <div key={idx}>{cur.name}</div>
+                ))}
+              </div>
+              <div className="cursor-pointer">{currentSong.albumId}</div>
             </div>
           </div>
         </div>
         {/* TODO: 仿照progress自己做一个进度条 */}
         <Card className="h-32">
-          <Player />
+          <Player url={currentSong.url} />
         </Card>
         {/* <Separator />
       下面这些暂时没用

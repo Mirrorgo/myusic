@@ -5,8 +5,7 @@ import Icon from "@mdi/react";
 import { mdiSkipPrevious, mdiSkipNext, mdiPause, mdiPlay } from "@mdi/js";
 import PlaySetting from "../../play-setting";
 import PlayList from "../../play-list";
-import { Separator } from "../../ui/separator";
-function Player() {
+function Player({ url }: { url: string }) {
   const [sound, setSound] = useState<Howl>();
   const [isPlay, setIsPlay] = useState<Boolean>(false);
   // TODO: 无歌时的处理: 播放按钮disable
@@ -19,8 +18,8 @@ function Player() {
 
   useEffect(() => {
     const newSound = new Howl({
-      // src: ["https://server.unimelb.top/public/music/myaudio.m4a"], // 替换为你的音频文件路径
-      src: ["https://server.unimelb.top/public/music/test.webm"], // 替换为你的音频文件路径
+      // src: ["https://server.unimelb.top/public/music/test.webm"], // 替换为你的音频文件路径
+      src: [`https://server.unimelb.top/public/music/${url}.webm`],
       volume: 0.5,
       html5: true,
     });
@@ -33,7 +32,7 @@ function Player() {
         newSound.unload();
       }
     };
-  }, []);
+  }, [url]);
   const playSound = () => {
     if (sound) {
       setIsPlay(true);

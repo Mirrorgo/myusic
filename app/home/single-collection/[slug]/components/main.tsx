@@ -1,4 +1,3 @@
-import SongItem from "@/app/components/song-item";
 import SongList from "@/app/components/song-list";
 import { querySongList } from "@/service/song";
 import { cache } from "react";

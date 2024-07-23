@@ -2,15 +2,17 @@
 
 import SongItem from "@/app/components/song-item";
 import { Song } from "@/service/song";
+import { useCurrentSong } from "@/store/currentSong";
 import { useState } from "react";
 
 function SongList({ songs }: { songs: Song[] }) {
   const [selectedSongId, setSelectedSongId] = useState<number>();
 
-  const handleClick = (songId: number) => {
-    setSelectedSongId(songId);
-    console.log(`Song clicked: ${songId}`);
-    // You can add more complex logic here, like playing the song or navigating to a details page
+  const setCurrentSong = useCurrentSong.use.setCurrentSong();
+
+  const handleClick = (song: Song) => {
+    setSelectedSongId(song.id);
+    setCurrentSong(song);
   };
 
   return (
@@ -20,7 +22,7 @@ function SongList({ songs }: { songs: Song[] }) {
           key={song.id}
           {...song}
           index={idx}
-          onClick={() => handleClick(song.id)}
+          onClick={() => handleClick(song)}
           isSelected={selectedSongId === song.id}
         />
       ))}

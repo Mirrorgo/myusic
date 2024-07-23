@@ -2,15 +2,16 @@ import axios from "axios";
 import { api } from "./core/apiService";
 import { BaseResponse } from ".";
 
-interface Song {
+type Song = {
   id: number;
   title: string;
   url: string;
-  artistId: number;
-  albumId: number;
+  albumId: number | null;
   createdAt: string;
   updatedAt: string;
-}
+  artist: Array<{ id: number; name: string }>;
+  album: null | object;
+};
 
 export async function querySongList() {
   try {
