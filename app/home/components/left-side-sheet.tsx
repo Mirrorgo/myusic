@@ -15,7 +15,9 @@ const LeftSideSheet = ({
   className: string;
   children: React.ReactNode;
 }) => {
-  const { isHomeShown, showHome, hideHome } = useHomeStore();
+  const isHomeShown = useHomeStore.use.isHomeShown();
+  const showHome = useHomeStore.use.showHome();
+  const hideHome = useHomeStore.use.hideHome();
   const router = useRouter();
   const searchParams = useSearchParams();
 

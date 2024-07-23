@@ -2,11 +2,9 @@
 import { useHomeStore } from "@/store/global";
 import { mdiMenu } from "@mdi/js";
 import Icon from "@mdi/react";
-import { ArrowLeft, X } from "lucide-react";
-import { useEffect } from "react";
 
 export default function Page({ params }: { params: { slug: string } }) {
-  const { isHomeShown, showHome, hideHome } = useHomeStore();
+  const showHome = useHomeStore.use.showHome();
 
   return (
     <div>

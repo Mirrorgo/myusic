@@ -1,3 +1,4 @@
+import createSelectors from "@/lib/createSelectors";
 import { create } from "zustand";
 
 // const useStore = create((set) => ({
@@ -14,7 +15,7 @@ interface PlayerCardStoreState {
   showFullScreenPlayerCard: () => void;
 }
 
-const usePlayerCardStore = create<PlayerCardStoreState>((set) => ({
+const usePlayerCardStoreBase = create<PlayerCardStoreState>((set) => ({
   currentPlayerCardType: "normal",
   showNormalPlayerCard: () => set({ currentPlayerCardType: "normal" }),
   showBottomPlayerCard: () => set({ currentPlayerCardType: "bottom" }),
@@ -27,7 +28,7 @@ interface HomeStoreState {
   hideHome: () => void;
 }
 
-const useHomeStore = create<HomeStoreState>((set) => ({
+const useHomeStoreBase = create<HomeStoreState>((set) => ({
   isHomeShown: false,
   showHome: () => {
     set({ isHomeShown: true });
@@ -37,5 +38,8 @@ const useHomeStore = create<HomeStoreState>((set) => ({
     set({ isHomeShown: false });
   },
 }));
+
+const useHomeStore = createSelectors(useHomeStoreBase);
+const usePlayerCardStore = createSelectors(usePlayerCardStoreBase);
 
 export { usePlayerCardStore, useHomeStore };

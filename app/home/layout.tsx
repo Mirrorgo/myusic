@@ -15,11 +15,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const {
-    currentPlayerCardType: currentMusicCardType,
-    showNormalPlayerCard: showNormalMusicCard,
-    showBottomPlayerCard: showBottomMusicCard,
-  } = usePlayerCardStore();
+  const currentPlayerCardType = usePlayerCardStore.use.currentPlayerCardType();
+  const showNormalPlayerCard = usePlayerCardStore.use.showNormalPlayerCard();
 
   const { matches } = useMediaMinWidth();
   return (
@@ -32,7 +29,7 @@ export default function RootLayout({
         </Suspense>
 
         {/* 当前音乐卡片界面 */}
-        {currentMusicCardType === "normal" || matches.sm ? (
+        {currentPlayerCardType === "normal" || matches.sm ? (
           <MusicCard />
         ) : (
           // sm:none, so 只考虑sm以下的情况
@@ -42,7 +39,7 @@ export default function RootLayout({
                 <LeftSideSheet className="">{children}</LeftSideSheet>
               </Suspense>
             </div>
-            <div onClick={() => showNormalMusicCard()}>bottom music bar</div>
+            <div onClick={() => showNormalPlayerCard()}>bottom music bar</div>
           </div>
         )}
       </div>

@@ -3,13 +3,10 @@ import { X } from "lucide-react";
 import { Card } from "../ui/card";
 import Image from "next/image";
 import Player from "./components/player";
+import { use } from "react";
 
 function MusicCard() {
-  const {
-    currentPlayerCardType: currentMusicCardType,
-    showNormalPlayerCard: showNormalMusicCard,
-    showBottomPlayerCard: showBottomMusicCard,
-  } = usePlayerCardStore();
+  const showBottomPlayerCard = usePlayerCardStore.use.showBottomPlayerCard();
   const music = {
     name: "浓缩蓝鲸",
     singer: "裘德",
@@ -20,7 +17,7 @@ function MusicCard() {
       <div className="flex flex-col justify-between h-screen sm:max-w-md ">
         <div className="flex flex-col justify-between">
           <div className="flex mx-2 mt-2 h-8 flex-row-reverse sm:hidden">
-            <X onClick={() => showBottomMusicCard()} />
+            <X onClick={() => showBottomPlayerCard()} />
           </div>
           <Card className="relative mx-5 mt-16 ">
             {/* 歌曲封面/歌词 */}

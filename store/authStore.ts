@@ -1,4 +1,3 @@
-// app/store/authStore.ts
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import axios from "axios";
@@ -8,6 +7,7 @@ import {
   removeAuthToken,
   setAuthToken,
 } from "@/service/core/apiService";
+import createSelectors from "@/lib/createSelectors";
 
 type AuthState = {
   user: any;
@@ -18,7 +18,7 @@ type AuthState = {
   //   checkAuth: () => Promise<boolean>;
 };
 
-const useAuthStore = create<AuthState>()(
+const useAuthStoreBase = create<AuthState>()(
   persist(
     (set, get) => ({
       user: null,
@@ -64,4 +64,5 @@ const useAuthStore = create<AuthState>()(
   )
 );
 
+const useAuthStore = createSelectors(useAuthStoreBase);
 export { useAuthStore };

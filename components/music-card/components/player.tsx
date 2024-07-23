@@ -6,19 +6,12 @@ import { mdiSkipPrevious, mdiSkipNext, mdiPause, mdiPlay } from "@mdi/js";
 import PlaySetting from "../../play-setting";
 import PlayList from "../../play-list";
 import { Separator } from "../../ui/separator";
-import { usePlayerCardStore } from "@/store/global";
 function Player() {
   const [sound, setSound] = useState<Howl>();
   const [isPlay, setIsPlay] = useState<Boolean>(false);
   // TODO: 无歌时的处理: 播放按钮disable
   const [canUserM4a, setCanUserM4a] = useState<Boolean>(false);
 
-  const {
-    currentPlayerCardType: currentMusicCardType,
-    showBottomPlayerCard: showBottomMusicCard,
-    showFullScreenPlayerCard: showFullScreenMusicCard,
-    showNormalPlayerCard: showNormalMusicCard,
-  } = usePlayerCardStore();
   useEffect(() => {
     setCanUserM4a(Howler.codecs("m4a"));
     return () => {};
