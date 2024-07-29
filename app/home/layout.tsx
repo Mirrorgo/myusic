@@ -16,7 +16,6 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const currentPlayerCardType = usePlayerCardStore.use.currentPlayerCardType();
-  const showNormalPlayerCard = usePlayerCardStore.use.showNormalPlayerCard();
 
   const { matches } = useMediaMinWidth();
   return (
@@ -30,7 +29,7 @@ export default function RootLayout({
 
         {/* 当前音乐卡片界面 */}
         {currentPlayerCardType === "normal" || matches.sm ? (
-          <MusicCard />
+          <MusicCard trueType="normal" />
         ) : (
           // sm:none, so 只考虑sm以下的情况
           <div className="flex justify-between flex-col h-screen">
@@ -39,7 +38,7 @@ export default function RootLayout({
                 <LeftSideSheet className="">{children}</LeftSideSheet>
               </Suspense>
             </div>
-            <div onClick={() => showNormalPlayerCard()}>bottom music bar</div>
+            <Player url="test" trueType="bottom" />
           </div>
         )}
       </div>

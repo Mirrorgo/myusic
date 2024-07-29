@@ -1,11 +1,11 @@
-import { usePlayerCardStore } from "@/store/global";
+import { PlayerCardType, usePlayerCardStore } from "@/store/global";
 import { X } from "lucide-react";
 import { Card } from "../ui/card";
 import Image from "next/image";
 import Player from "./components/player";
 import { useCurrentSong } from "@/store/currentSong";
 
-function MusicCard() {
+function MusicCard({ trueType }: { trueType: PlayerCardType }) {
   const showBottomPlayerCard = usePlayerCardStore.use.showBottomPlayerCard();
   const currentSong = useCurrentSong.use.currentSong();
   return (
@@ -49,7 +49,7 @@ function MusicCard() {
         </div>
         {/* TODO: 仿照progress自己做一个进度条 */}
         <Card className="h-32">
-          <Player url={currentSong.url} />
+          <Player url={currentSong.url} trueType={trueType} />
         </Card>
         {/* <Separator />
       下面这些暂时没用

@@ -7,9 +7,10 @@ import { create } from "zustand";
 //   removeAllBears: () => set({ bears: 0 }),
 //   updateBears: (newBears) => set({ bears: newBears }),
 // }))
+export type PlayerCardType = "bottom" | "normal" | "full-screen";
 
 interface PlayerCardStoreState {
-  currentPlayerCardType: "bottom" | "normal" | "full-screen";
+  currentPlayerCardType: PlayerCardType;
   showBottomPlayerCard: () => void;
   showNormalPlayerCard: () => void;
   showFullScreenPlayerCard: () => void;

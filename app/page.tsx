@@ -22,7 +22,7 @@ function Page() {
 
   return (
     <div>
-      <Link href={"./home"}>to home</Link>
+      <Link href={"./home"}>点击听歌，当前页面暂未开发</Link>
     </div>
   );
 }

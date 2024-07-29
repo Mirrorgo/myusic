@@ -53,7 +53,7 @@ function LeftSideContent() {
           <MusicItem />
         </Link>
         <Link href={"/home/artist/zhou"}>
-          <MusicItem />
+          <MusicItem artist="周杰伦" />
         </Link>
       </div>
     </>

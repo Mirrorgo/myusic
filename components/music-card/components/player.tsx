@@ -5,11 +5,19 @@ import Icon from "@mdi/react";
 import { mdiSkipPrevious, mdiSkipNext, mdiPause, mdiPlay } from "@mdi/js";
 import PlaySetting from "../../play-setting";
 import PlayList from "../../play-list";
-function Player({ url }: { url: string }) {
+import { PlayerCardType, usePlayerCardStore } from "@/store/global";
+function Player({
+  url = "test",
+  trueType, // 不是current,是真正的类型
+}: {
+  url: string;
+  trueType: PlayerCardType;
+}) {
   const [sound, setSound] = useState<Howl>();
   const [isPlay, setIsPlay] = useState<Boolean>(false);
   // TODO: 无歌时的处理: 播放按钮disable
   const [canUserM4a, setCanUserM4a] = useState<Boolean>(false);
+  const showNormalPlayerCard = usePlayerCardStore.use.showNormalPlayerCard();
 
   useEffect(() => {
     setCanUserM4a(Howler.codecs("m4a"));
@@ -33,6 +41,7 @@ function Player({ url }: { url: string }) {
       }
     };
   }, [url]);
+
   const playSound = () => {
     if (sound) {
       setIsPlay(true);
@@ -54,34 +63,37 @@ function Player({ url }: { url: string }) {
   };
   // TODO: chrome上外部的播放器按钮需要支持反控
   // FIXME: 在手机端edge上无法播放
-  return (
-    <div>
-      <div className="flex justify-between items-center w-5/6 mx-auto">
-        {/* <MyIcon src={"/repeat_one.svg"} size={1.3} /> */}
-        <PlaySetting />
+  if (trueType === "normal") {
+    return (
+      <div>
+        <div className="flex justify-between items-center w-5/6 mx-auto">
+          {/* <MyIcon src={"/repeat_one.svg"} size={1.3} /> */}
+          <PlaySetting />
 
-        <div className="flex justify-between items-center w-6/12">
-          <div className=" cursor-pointer">
-            <Icon path={mdiSkipPrevious} size={1.7} />
+          <div className="flex justify-between items-center w-6/12">
+            <div className=" cursor-pointer">
+              <Icon path={mdiSkipPrevious} size={1.7} />
+            </div>
+            <div
+              className=" cursor-pointer"
+              onClick={() => (isPlay ? pauseSound() : playSound())}
+            >
+              {isPlay ? (
+                <Icon path={mdiPause} size={2.3} />
+              ) : (
+                <Icon path={mdiPlay} size={2.3} />
+              )}
+            </div>
+            <div className=" cursor-pointer">
+              <Icon path={mdiSkipNext} size={1.7} />
+            </div>
           </div>
-          <div
-            className=" cursor-pointer"
-            onClick={() => (isPlay ? pauseSound() : playSound())}
-          >
-            {isPlay ? (
-              <Icon path={mdiPause} size={2.3} />
-            ) : (
-              <Icon path={mdiPlay} size={2.3} />
-            )}
-          </div>
-          <div className=" cursor-pointer">
-            <Icon path={mdiSkipNext} size={1.7} />
-          </div>
+          <PlayList />
         </div>
-        <PlayList />
       </div>
-    </div>
-  );
+    );
+  }
+  return <div onClick={() => showNormalPlayerCard()}>bottom music bar wow</div>;
 }
 
 export default Player;
