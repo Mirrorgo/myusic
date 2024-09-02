@@ -1,28 +1,17 @@
-"use client";
-import { api } from "@/service/core/apiService";
-import Link from "next/link";
-import { useEffect } from "react";
+import MusicList from "@/components/simple-page/music-list";
+import { Suspense } from "react";
 
 function Page() {
-  // 在组件中使用
-  const fetchData = async () => {
-    try {
-      const response = await api().post("/v1/user/list");
-      // 处理响应
-      console.log(response.data, "aha");
-    } catch (error) {
-      // 处理错误
-    }
-  };
-  useEffect(() => {
-    fetchData();
-
-    return () => {};
-  }, []);
-
   return (
     <div>
-      <Link href={"./home"}>点击听歌，当前页面暂未开发</Link>
+      <div className="w-4/5 mx-auto my-3">
+        <h1 className="scroll-m-20 text-2xl font-extrabold tracking-tight lg:text-5xl ">
+          歌单
+        </h1>
+      </div>
+      <Suspense fallback={<div>Loading feed...</div>}>
+        <MusicList />
+      </Suspense>
     </div>
   );
 }
