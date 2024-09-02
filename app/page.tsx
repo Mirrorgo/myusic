@@ -10,7 +10,8 @@ function Page() {
         </h1>
       </div>
       <Suspense fallback={<div>Loading feed...</div>}>
-        <MusicList />
+        {/* <MusicList /> */}
+        <div>wow</div>
       </Suspense>
     </div>
   );
