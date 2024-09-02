@@ -58,7 +58,7 @@ async function MusicList() {
                   </a>
                   {/* <DateFormatter timestamp={music.updatedAt}></DateFormatter> */}
                 </div>
-                <Button size="icon" variant="ghost" className="rounded-full">
+                <Button size="icon" variant="ghost" className="rounded-lg">
                   <Play size={20} />
                 </Button>
               </div>
