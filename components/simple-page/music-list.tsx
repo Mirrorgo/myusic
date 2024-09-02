@@ -17,6 +17,7 @@ import { Button } from "../ui/button";
 async function MusicList() {
   const response = await fetch(
     "https://server.unimelb.top/wubian/api/v1/song/list",
+    // "https://apifoxmock.com/m1/4758938-4412234-default/v1/song/list",
     {
       method: "POST", // specify the HTTP method as POST
       headers: {
@@ -27,7 +28,7 @@ async function MusicList() {
   );
   const data: BaseResponse<Song[]> = await response.json();
   const musicList = data.data;
-  console.log(musicList, "list");
+  // console.log(musicList, "list");
 
   return (
     <div className="flex flex-col justify-between items-center gap-2 w-3/4 mx-auto">

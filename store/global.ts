@@ -35,7 +35,7 @@ const useHomeStoreBase = create<HomeStoreState>((set) => ({
     set({ isHomeShown: true });
   },
   hideHome: () => {
-    console.log("hide");
+    // console.log("hide");
     set({ isHomeShown: false });
   },
 }));
